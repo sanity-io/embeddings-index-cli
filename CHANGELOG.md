@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.0 (2023-09-04)
+
+### Features
+
+- initial version ([56277f6](https://github.com/sanity-io/embeddings-index-cli/commit/56277f6de1bf7b14eb7c7c09abf5724cf25b6ed9))
+
 ## [1.1.1](https://github.com/sanity-io/embeddings-cli/compare/v1.1.0...v1.1.1) (2023-08-23)
 
 ### Bug Fixes
