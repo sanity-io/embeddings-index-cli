@@ -4,8 +4,16 @@
   "description": "CLI for creating and managing embeddings indexes",
   "keywords": [
     "sanity",
-    "sanity-plugin"
+    "cli"
   ],
+  "homepage": "https://github.com/sanity-io/embeddings-index--cli#readme",
+  "bugs": {
+    "url": "https://github.com/sanity-io/embeddings-index--cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sanity-io/embeddings-index--cli.git"
+  },
   "license": "MIT",
   "author": "Sanity.io <hello@sanity.io>",
   "exports": {
