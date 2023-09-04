@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": false
+  },
+  "extends": [
+    "sanity",
+    "sanity/typescript",
+    "plugin:prettier/recommended",
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  }
+}
