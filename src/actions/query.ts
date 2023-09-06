@@ -3,6 +3,7 @@ import {TypedFlags} from 'meow'
 import log from '../util/log'
 import {stringify} from '../util/stringify'
 import {getIndexConfig} from '../util/config'
+import {ValidationError} from '../util/error'
 
 export const queryFlags = {
   text: {
@@ -35,7 +36,7 @@ export async function query(options: QueryOptions) {
 
   const queryString = flags.text
   if (!queryString) {
-    throw new Error('--text is required')
+    throw new ValidationError('--text is required')
   }
 
   const {client, dataset, indexName} = await getIndexConfig(flags, basePath)

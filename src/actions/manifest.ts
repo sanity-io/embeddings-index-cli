@@ -4,18 +4,12 @@ import {applyManifestFlags, getIndexConfig} from '../util/config'
 import {writeFile} from 'fs/promises'
 import path from 'path'
 import log from '../util/log'
+import {ValidationError} from '../util/error'
+import {createFlags} from './create'
 
 export const manifestFlags = {
-  filter: {
-    type: 'string',
-    description:
-      'GROQ filter. Controls which documents are indexed. Must be a Sanity webhook compliant GROQ filter.',
-  },
-  projection: {
-    type: 'string',
-    description:
-      'GROQ projection for documents matching the filter. Allows reshaping the document before it is indexed.',
-  },
+  filter: createFlags.filter,
+  projection: createFlags.projection,
   out: {
     type: 'string',
     description:
@@ -41,7 +35,7 @@ export async function createManifest(options: ManifestOptions) {
 
   const outPath = flags.out
   if (!outPath) {
-    throw new Error('--out is required')
+    throw new ValidationError('--out is required')
   }
   const filePath = path.isAbsolute(flags.out)
     ? flags.out

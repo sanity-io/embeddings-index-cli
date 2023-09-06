@@ -3,17 +3,18 @@ import {TypedFlags} from 'meow'
 import {applyManifestFlags, getIndexConfig} from '../util/config'
 import log from '../util/log'
 import {stringify} from '../util/stringify'
+import {ValidationError} from '../util/error'
 
 export const createFlags = {
   filter: {
     type: 'string',
     description:
-      'GROQ projection for documents matching the filter. Allows reshaping the document before it is indexed.',
+      'GROQ projection for documents matching the filter. Allows reshaping the document before it is indexed. Pass empty string ("") to match all documents.',
   },
   projection: {
     type: 'string',
     description:
-      'GROQ filter controls which documents are put into the index. Must be a Sanity webhook compliant GROQ filter.',
+      'GROQ filter controls which documents are put into the index. Must be a Sanity webhook compliant GROQ filter. Pass empty string ("") or "{...}" to include all document fields',
   },
   ...sharedIndexFlags,
   ...sharedFlags,
@@ -33,15 +34,22 @@ export async function create(options: CreateOptions) {
 
   const appliedManifest = applyManifestFlags(indexName, dataset, manifest, flags)
 
-  const response = await client.request({
-    uri: `embeddings-index/${appliedManifest.dataset}`,
-    method: 'POST',
-    body: {
-      indexName: appliedManifest.indexName,
-      projection: appliedManifest.projection,
-      filter: appliedManifest.filter,
-    },
-  })
-  log.info('Created index')
-  log.info(stringify(response, flags.prettify))
+  try {
+    const response = await client.request({
+      uri: `embeddings-index/${appliedManifest.dataset}`,
+      method: 'POST',
+      body: {
+        indexName: appliedManifest.indexName,
+        projection: appliedManifest.projection,
+        filter: appliedManifest.filter,
+      },
+    })
+    log.info('Created index')
+    log.info(stringify(response, flags.prettify))
+  } catch (err: any) {
+    if (err.statusCode === 400) {
+      throw new ValidationError(err?.response?.body?.message)
+    }
+    throw err
+  }
 }

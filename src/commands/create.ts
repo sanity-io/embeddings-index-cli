@@ -48,11 +48,14 @@ Manifest file
   ${binName} manifest --out manifest.json --dataset <dataset> --indexName <indexName> --projection <projection> --filter <filter>
 
 Examples
-  # Create a new embeddings index
+  # Create a new embeddings index matching all documents
+  ${binName} create --indexName my-index --dataset production --filter "" --projection ""
+
+  # Create a new embeddings index for a type
   ${binName} create --indexName my-index --dataset production --filter "_type='myType'" --projection "{...}"
 
   # Create a new embeddings index using a manifest.json
-  # //embeddings-index.json, stored in the on the root of the Sanity project directory
+  # //manifest.json, stored in the on the root of the Sanity project directory
   # {
   #   "indexName": "my-index",
   #   "dataset": "production",
@@ -60,7 +63,7 @@ Examples
   #   "filter": "_type=='myType'"
   # }
 
-  ${binName} create --manifest embeddings-index.json
+  ${binName} create --manifest mainfest.json
 `
 
 async function run({argv}: {argv: string[]}) {

@@ -2,6 +2,7 @@ import meow from 'meow'
 import pkg from '../../package.json'
 import log from '../util/log'
 import {sharedFlags} from '../sharedFlags'
+import {ValidationError} from '../util/error'
 
 const description = `Show the installed version of ${pkg.name}`
 
@@ -55,7 +56,7 @@ function run({argv}: {argv: string[]}) {
   }
 
   if (numVersionFlags > 1) {
-    throw new Error(
+    throw new ValidationError(
       `--major, --minor and --patch are mutually exclusive - only one can be used at a time`,
     )
   }

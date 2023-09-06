@@ -3,6 +3,7 @@ import {createClient} from './sanityClient'
 import {Manifest, readManifest} from '../manifest'
 import {SanityClient} from 'sanity'
 import log from './log'
+import {ValidationError} from './error'
 
 export interface IndexConfig {
   client: SanityClient
@@ -28,10 +29,10 @@ export async function getIndexConfig(
   const dataset = flags.dataset ?? manifest?.dataset ?? clientDataset
 
   if (!indexName) {
-    throw new Error('indexName missing in manifest file or as command line argument.')
+    throw new ValidationError(`indexName missing in manifest file or as command line argument.`)
   }
   if (!dataset) {
-    throw new Error(
+    throw new ValidationError(
       'dataset not found in manifest file, as command line argument or in sanity.config',
     )
   }
@@ -56,12 +57,12 @@ export function applyManifestFlags(
 ): Manifest {
   const projection = flags.projection ?? manifest?.projection
   if (!projection) {
-    throw new Error('projection missing in manifest file or as command line argument')
+    throw new ValidationError('projection missing in manifest file or as command line argument')
   }
 
   const filter = flags.filter ?? manifest?.filter
   if (!filter) {
-    throw new Error('filter missing in manifest file or as command line argument')
+    throw new ValidationError('filter missing in manifest file or as command line argument')
   }
   return {
     indexName,

@@ -6,13 +6,13 @@ import {binName} from './constants'
 import execa from 'execa'
 import path from 'path'
 import {flagHelp} from './util/stringify'
+import {ValidationError} from './util/error'
 
 const help = `
 Usage
   ${binName} [--help] [--debug] <command> [<args>]
 
-Command list:
-
+Command list
   create          Create a new index
   delete          Delete an existing index
   list            List all indexes
@@ -22,6 +22,9 @@ Command list:
   version         Show the version of ${binName} currently installed
 
   The commands has to be run in a Sanity project directory.
+
+Command help
+  ${binName} <command> --help
 
 Options
 ${flagHelp(sharedFlags)}
@@ -84,6 +87,9 @@ export async function cliEntry(argv = process.argv) {
     await cmd({argv: argv.slice(3)})
   } catch (err: any) {
     log.error(err instanceof TypeError || cli.flags.debug ? err.stack : err.message)
+    if (err instanceof ValidationError) {
+      log.info(`Run '${binName} ${commandName} --help' for usage details.`)
+    }
 
     // eslint-disable-next-line no-process-exit
     process.exit(1)
