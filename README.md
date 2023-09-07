@@ -14,7 +14,7 @@ This can take some time depending on the number of documents that need to be syn
 
 ## Installation
 
-> npm i -D @sanity/embeddings-cli
+> npm i -D @sanity/embeddings-index-cli
 
 ## Usage
 
