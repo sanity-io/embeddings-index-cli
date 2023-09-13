@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/sanity-io/embeddings-index-cli/compare/v1.0.3...v1.0.4) (2023-09-13)
+
+### Bug Fixes
+
+- show info when project is missing projec feature ([a3f3ae5](https://github.com/sanity-io/embeddings-index-cli/commit/a3f3ae57b8d438218d2a1beed10139d52bfe2c2b))
+
 ## [1.0.3](https://github.com/sanity-io/embeddings-index-cli/compare/v1.0.2...v1.0.3) (2023-09-07)
 
 ### Bug Fixes
