@@ -86,9 +86,20 @@ export async function cliEntry(argv = process.argv) {
     log.setVerbosity(cli.flags)
     await cmd({argv: argv.slice(3)})
   } catch (err: any) {
+    if (err.response && cli.flags.debug) {
+      log.error(JSON.stringify(err.response))
+    }
     log.error(err instanceof TypeError || cli.flags.debug ? err.stack : err.message)
+
     if (err instanceof ValidationError) {
       log.info(`Run '${binName} ${commandName} --help' for usage details.`)
+    }
+
+    if (err?.response?.body?.message?.includes('Project is not allowed to use this feature')) {
+      log.info(
+        'Embeddings index APIs are only available on Team tier and above. Please upgrade to enable access.',
+      )
+      log.info('https://sanity.io/pricing')
     }
 
     // eslint-disable-next-line no-process-exit

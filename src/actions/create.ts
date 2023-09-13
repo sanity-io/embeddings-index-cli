@@ -48,6 +48,9 @@ export async function create(options: CreateOptions) {
     log.info(stringify(response, flags.prettify))
   } catch (err: any) {
     if (err.statusCode === 400) {
+      if (flags.debug) {
+        log.error(JSON.stringify(err.response))
+      }
       throw new ValidationError(err?.response?.body?.message)
     }
     throw err
