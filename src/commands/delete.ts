@@ -14,10 +14,10 @@ Options
 ${flagHelp(deleteFlags)}
 
 Examples
-  # Delete embeddings index for default dataset
-  ${binName} create --indexName my-index
+  # Delete embeddings index for the default dataset
+  ${binName} delete --indexName my-index
 
-  # Delete index defined in manifest.json
+  # Delete embeddings index defined in manifest.json 'indexName'
   ${binName} delete --manifest manifest.json
 `
 
