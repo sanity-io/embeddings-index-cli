@@ -4,16 +4,16 @@ import log from '../util/log'
 import {sharedFlags} from '../sharedFlags'
 import {ValidationError} from '../util/error'
 
-const description = `Show the installed version of ${pkg.name}`
+const description = `Show the currently installed version of ${pkg.name}`
 
 const help = `
 Usage
   ${pkg.binname} version
 
 Options
-  --major  Show only the major version
-  --minor  Show only the minor version
-  --patch  Show only the patch version
+  --major  Show only the major version number
+  --minor  Show only the minor version number
+  --patch  Show only the patch version number
 
 Examples
   $ ${pkg.binname} version
@@ -57,7 +57,7 @@ function run({argv}: {argv: string[]}) {
 
   if (numVersionFlags > 1) {
     throw new ValidationError(
-      `--major, --minor and --patch are mutually exclusive - only one can be used at a time`,
+      `--major, --minor and --patch are mutually exclusive. Specify only one option at a time`,
     )
   }
 
