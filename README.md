@@ -1,21 +1,22 @@
-# Sanity Embeddings CLI
+# Sanity Embeddings Index CLI
 
-CLI for the Sanity embeddings index API.
+CLI for the Sanity Embeddings Index API.
 
-The embeddings index API allows the creation of named embeddings vector indexes.
-An embeddings index contains embeddings for all Sanity documents matching a configured GROQ filter in a dataset.
-A GROQ projection is applied to matching documents before vectorization.
+The Embeddings Index API enables creating named embeddings vector indexes.
 
-Indexes can be queried using semantic text search, and returns a list of matching document ids,
-sorted by relevance.
+An embeddings index contains embeddings for all Sanity documents matching a configured [GROQ filter](https://www.sanity.io/docs/how-queries-work) in a dataset.
+A [GROQ projection](https://www.sanity.io/docs/query-cheat-sheet) is applied to matching documents before vectorization.
 
-When an index is first created, all documents matching the configured filter will be synced into the index.
-This can take some time depending on the number of documents that need to be synced.
+You can query indexes using semantic text search to obtain a list of matching document IDs sorted by relevance.
+
+When an index is first created, all documents matching the configured filter are synced into the index.
+Creating an index can take time, depending on the number of existing documents and the indexer load.
 
 ## Installation
 
-> npm i -D @sanity/embeddings-index-cli
-
+```sh
+npm i -D @sanity/embeddings-index-cli
+```
 ## Usage
 
 ```bash
@@ -24,21 +25,21 @@ This can take some time depending on the number of documents that need to be syn
  Usage
     $ embeddings-index [--help] [--debug] <command> [<args>]
 
-   These are common commands used in various situations:
+   These are common commands for CRUD operations on embeddings indexes:
 
      create          Create a new embeddings index
      delete          Delete an existing embeddings index
      list            List all embedding indexes
-     get             Get a spesific embeddings index
-     query           Query a embeddings index
-     version         Show the version of @snorreeb/sanity-embeddings currently installed
+     get             Get a specific embeddings index
+     query           Query an embeddings index
+     version         Show the currently installed version of Embeddings Index CLI
 
-   The commands have to be run in a Sanity project directory with a 'sanity.cli.(ts|js)' file.
+   Run the commands in a Sanity project directory with a 'sanity.cli.(ts|js)' file.
 
    Options
-     --verbose       Log everything. This option conflicts with --silent.
-     --silent        Do not print info and warning messages.
-     --debug         Print stack trace on errors.
+     --verbose       Log everything. This option conflicts with --silent
+     --silent        Do not print info and warning messages. This option conflicts with --verbose
+     --debug         Print stack trace on errors
      --version       Output the version number
      --help          Output usage information
 ```

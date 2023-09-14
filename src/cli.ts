@@ -13,15 +13,15 @@ Usage
   ${binName} [--help] [--debug] <command> [<args>]
 
 Command list
-  create          Create a new index
-  delete          Delete an existing index
-  list            List all indexes
-  get             Get a specific index
-  query           Query an index
-  manifest        Create a JSON manifest file to define an index
+  create          Create a new embeddings index
+  delete          Delete an existing embeddings index
+  list            List all embeddings indexes
+  get             Get a specific embeddings index
+  query           Query an embeddings index
+  manifest        Create a JSON manifest file to define an embeddings index
   version         Show the currently installed version of ${binName}
 
-  Run the commands in a Sanity project directory.
+  Run the commands in a Sanity project directory with a 'sanity.cli.(ts|js)' file.
 
 Command help
   ${binName} <command> --help
@@ -97,7 +97,7 @@ export async function cliEntry(argv = process.argv) {
 
     if (err?.response?.body?.message?.includes('Project is not allowed to use this feature')) {
       log.info(
-        'Embeddings Index APIs are only available for Team and higher tiers. Upgrade your plan to enable access.',
+        'Embeddings Index API is available to users on the Team plan and above. Upgrade your plan to enable access.',
       )
       log.info('https://sanity.io/pricing')
     }
