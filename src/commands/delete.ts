@@ -14,7 +14,7 @@ Options
 ${flagHelp(deleteFlags)}
 
 Examples
-  # Delete embeddings index for the default dataset
+  # Delete embeddings index for the default dataset in the project
   ${binName} delete --indexName my-index
 
   # Delete embeddings index defined in manifest.json 'indexName'
