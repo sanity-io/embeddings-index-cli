@@ -18,17 +18,17 @@ Command list
   list            List all indexes
   get             Get a specific index
   query           Query an index
-  manifest        Create a manifest JSON file for use with other commands
-  version         Show the version of ${binName} currently installed
+  manifest        Create a JSON manifest file to define an index
+  version         Show the currently installed version of ${binName}
 
-  The commands has to be run in a Sanity project directory.
+  Run the commands in a Sanity project directory.
 
 Command help
   ${binName} <command> --help
 
 Options
 ${flagHelp(sharedFlags)}
-  --version       Output the version number
+  --version       Output the currently installed version of ${binName}
 
 `
 
@@ -97,7 +97,7 @@ export async function cliEntry(argv = process.argv) {
 
     if (err?.response?.body?.message?.includes('Project is not allowed to use this feature')) {
       log.info(
-        'Embeddings index APIs are only available on Team tier and above. Please upgrade to enable access.',
+        'Embeddings Index APIs are only available for Team and higher tiers. Upgrade your plan to enable access.',
       )
       log.info('https://sanity.io/pricing')
     }
