@@ -4,7 +4,7 @@ import {listIndexes, listIndexesFlags} from '../actions/list'
 import {binName} from '../constants'
 import {flagHelp} from '../util/stringify'
 
-const description = `Get the status of all existing existing embeddings indexes.`
+const description = `Get the status of all existing embeddings indexes.`
 
 const help = `
 Usage

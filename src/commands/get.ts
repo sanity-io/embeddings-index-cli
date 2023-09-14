@@ -14,10 +14,10 @@ Options
 ${flagHelp(getIndexFlags)}
 
 Examples
-  # Get status of the specified index for the default dataset in the project
+  # Get the status of the specified index for the default dataset in the project
   ${binName} get --indexName my-index
 
-  # Get status of the index defined in manifest.json 'indexName'
+  # Get the status of the index defined in manifest.json 'indexName'
   ${binName} get --manifest manifest.json
 `
 
