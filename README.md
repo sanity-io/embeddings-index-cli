@@ -12,6 +12,8 @@ You can query indexes using semantic text search to obtain a list of matching do
 When an index is first created, all documents matching the configured filter are synced into the index.
 Creating an index can take time, depending on the number of existing documents and the indexer load.
 
+> Using this feature requires Sanity to send data to OpenAI.com, and Pinecone.io for storing vector interpretations of documents.
+
 ## Installation
 
 ```sh
