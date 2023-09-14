@@ -4,7 +4,7 @@ import {query, queryFlags} from '../actions/query'
 import {binName} from '../constants'
 import {flagHelp} from '../util/stringify'
 
-const description = `Query an embeddings index. Returns an array of document ids with relevance score.`
+const description = `Query an embeddings index. Returns an array of document IDs with their relevance score.`
 
 const help = `
 Usage
@@ -14,11 +14,11 @@ Options
 ${flagHelp(queryFlags)}
 
 Examples
-  # Find documents matching a query text
+  # Retrieve relevant documents matching a text string query
   ${binName} query --text "content relevant to the topic at hand"
 
-  # Find documents matching a json document
-  ${binName} query --text '{"_type": "myType", "title": "Some topic"}'
+  # Retrieve relevant documents matching a JSON document
+  ${binName} query --text '{"_type": "myDocumentType", "title": "My favorite topic"}'
 `
 
 async function run({argv}: {argv: string[]}) {
