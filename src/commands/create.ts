@@ -32,8 +32,8 @@ Details
   $ ${binName} get --indexName <name-of-the-index>
 
 Manifest file
-  Define an index configuration in a manifest file.
-  The manifest file must be a valid JSON file with the following schema:
+  Define an index configuration in a manifest file to pass with the '--manifest' argument.
+  The manifest must be a valid JSON file with the following schema:
 
   {
     indexName: string,

@@ -4,7 +4,7 @@ import {binName} from '../constants'
 import {flagHelp} from '../util/stringify'
 import {createManifest, manifestFlags} from '../actions/manifest'
 
-const description = `Create a manifest JSON file that can be used with --manifest argument for other commands.`
+const description = `Create a JSON manifest file to pass with the '--manifest' argument for other commands.`
 
 const help = `
 Usage
@@ -14,11 +14,11 @@ Options
 ${flagHelp(manifestFlags)}
 
 Examples
-  # Create a manifest file
-  ${binName} manifest --out manifest.json --indexName my-index --dataset production --filter "_type='myType'" --projection "{...}"
+  # Create a JSON manifest file
+  ${binName} manifest --out manifest.json --indexName my-index --dataset production --filter "_type='myDocumentType'" --projection "{...}"
 
-  # Create a manifest file based on another manifest.json
-  ${binName} manifest --out manifest-2.json --indexName my-index-2 --filter "!(_type in ['myType'])"
+  # Create a JSON manifest file based on another manifest.json
+  ${binName} manifest --out manifest-2.json --indexName my-index-2 --filter "!(_type in ['myDocumentType'])"
 `
 
 async function run({argv}: {argv: string[]}) {
