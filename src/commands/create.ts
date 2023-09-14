@@ -13,49 +13,52 @@ Usage
 Options
 ${flagHelp(createFlags)}
 
-Prerequisite
-  Run 'sanity login' or set SANITY_EMBEDDINGS_TOKEN environment variable prior to invoking the command.
+Prerequisites
+  Before invoking the command, either run 'sanity login', or set a 'SANITY_EMBEDDINGS_TOKEN' environment variable.
   The user/token needs the following permissions:
-  * create webhooks
-  * create tokens
-  * read datasets
+  * Create webhooks
+  * Create tokens
+  * Read datasets
 
 Details
-  This command will:
+  The command performs the following actions:
 
-  * create an embeddings index matching the provided configuration
-  * create a robot token that will be used for reading documents from the project (token is reused across indexes)
-  * create a webhook matching the filter for keeping the embeddings index up to date
-  * start indexing all documents matching the filter at the time of creation
+  * Create an embeddings index matching the provided configuration.
+  * Create a robot token to enable reading documents from the Sanity project (token is reused across indexes.)
+  * Create a webhook matching the filter to automatically update the embeddings index.
+  * Start indexing all documents matching the filter at the time of creation.
 
-  To see the progress of the initial indexing job, use the get command:
-  $ ${binName} get --indexName <indexName>
+  To check the progress of the initial indexing job, pass the index name with the 'get' command:
+  $ ${binName} get --indexName <name-of-the-index>
 
 Manifest file
-  The --manifest file should be a json file matching the following schema:
+  Define an index configuration in a manifest file to pass with the '--manifest' argument.
+  The manifest must be a valid JSON file with the following schema:
 
   {
     indexName: string,
-    dataset: string
+    dataset: string,
+    filter: string,
     projection: string
-    filter: string
   }
 
-  projection should be a valid GROQ projection, WITH curly brackets, ie "{...}".
-  filter should be a valid GROQ filter, WITHOUT square brackets, ie "_type=='myType'"
+  * indexName: the name of the embeddings index.
+  * dataset: the dataset to index. Must be an existing dataset in the Sanity project.
+  * filter: must be a valid GROQ filter WITHOUT square brackets. Ex: "_type=='myDocumentType'".
+  * projection: must be a valid GROQ projection, including curly brackets. Ex: "{...}".
 
-  Can be created with
-  ${binName} manifest --out manifest.json --dataset <dataset> --indexName <indexName> --projection <projection> --filter <filter>
+  To create a JSON manifest file, invoke the 'manifest' command:
+  ${binName} manifest --out manifest.json --dataset <name-of-the-dataset> --indexName <name-of-the-index> --filter <GROQ-filter> --projection <GROQ-projection>
 
 Examples
   # Create a new embeddings index matching all documents
   ${binName} create --indexName my-index --dataset production --filter "" --projection ""
 
-  # Create a new embeddings index for a type
-  ${binName} create --indexName my-index --dataset production --filter "_type='myType'" --projection "{...}"
+  # Create a new embeddings index for a document type
+  ${binName} create --indexName my-index --dataset production --filter "_type='myDocumentType'" --projection "{...}"
 
-  # Create a new embeddings index using a manifest.json
-  # //manifest.json, stored in the on the root of the Sanity project directory
+  # Create a new embeddings index using a manifest.json file
+  # //manifest.json, stored in the Sanity project root directory
   # {
   #   "indexName": "my-index",
   #   "dataset": "production",
@@ -63,7 +66,7 @@ Examples
   #   "filter": "_type=='myType'"
   # }
 
-  ${binName} create --manifest mainfest.json
+  ${binName} create --manifest manifest.json
 `
 
 async function run({argv}: {argv: string[]}) {

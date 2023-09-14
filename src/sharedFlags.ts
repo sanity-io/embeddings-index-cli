@@ -4,17 +4,17 @@ export const sharedFlags = {
   verbose: {
     type: 'boolean',
     default: false,
-    description: 'Log everything. This option conflicts with --silent.',
+    description: 'Log everything. This option conflicts with --silent',
   },
   silent: {
     type: 'boolean',
     default: false,
-    description: 'Do not print info and warning messages.',
+    description: 'Do not print info and warning messages. This option conflicts with --verbose',
   },
   debug: {
     default: false,
     type: 'boolean',
-    description: 'Print stack trace on errors.',
+    description: 'Print stack trace on errors',
   },
   help: {
     default: false,
@@ -29,7 +29,7 @@ export const sharedIndexFlags = {
   manifest: {
     type: 'string',
     description:
-      'Path to manifest JSON file describing the index. Command-line provided overrides take precedence.',
+      'Path to a JSON manifest file describing the embeddings index. Command-line provided overrides take precedence.',
   },
   indexName: {
     type: 'string',
@@ -38,7 +38,7 @@ export const sharedIndexFlags = {
   dataset: {
     type: 'string',
     description:
-      'Dataset to create index on. Defaults to value found in sanity.cli.(js|ts) for the project.',
+      'Dataset used to create the embeddings index. Defaults to the value found in sanity.cli.(js|ts) for the project.',
   },
   prettify: {
     type: 'boolean',
