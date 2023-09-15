@@ -96,10 +96,7 @@ export async function cliEntry(argv = process.argv) {
     }
 
     if (err?.response?.body?.message?.includes('Project is not allowed to use this feature')) {
-      log.info(
-        'Embeddings Index API is available to users on the Team plan and above. Upgrade your plan to enable access.',
-      )
-      log.info('https://sanity.io/pricing')
+      ;(await import('./disabledNotice')).default()
     }
 
     // eslint-disable-next-line no-process-exit
