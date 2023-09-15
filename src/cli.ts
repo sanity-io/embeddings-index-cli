@@ -95,7 +95,11 @@ export async function cliEntry(argv = process.argv) {
       log.info(`Run '${binName} ${commandName} --help' for usage details.`)
     }
 
-    if (err?.response?.body?.message?.includes('Project is not allowed to use this feature')) {
+    const responseMessage = err?.response?.body?.message
+    if (
+      responseMessage?.includes('Project is not allowed to use this feature') ||
+      responseMessage.includes('feature is not available')
+    ) {
       ;(await import('./disabledNotice')).default()
     }
 
