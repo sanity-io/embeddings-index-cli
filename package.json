@@ -1,6 +1,6 @@
 {
   "name": "@sanity/embeddings-index-cli",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "CLI for creating and managing embeddings indexes",
   "keywords": [
     "sanity",
