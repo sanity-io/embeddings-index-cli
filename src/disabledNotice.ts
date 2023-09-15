@@ -6,6 +6,8 @@ export default function logDisabledNotice() {
 
   log.info(
     '💎 Unlock semantic search with Embeddings Index APIs — available on Team, Business, and Enterprise plans. ' +
-      `Upgrade now: https://www.sanity.io/manage/project/${client.config().projectId}/plan`,
+      `Upgrade now: https://www.sanity.io/manage/project/${
+        client.config().projectId
+      }/plan?ref=embeddings-cli`,
   )
 }
