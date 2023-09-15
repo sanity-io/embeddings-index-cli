@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/sanity-io/embeddings-index-cli/compare/v1.0.5...v1.0.6) (2023-09-15)
+
+### Bug Fixes
+
+- **docs:** reworded team+ plan requirement notice ([0d28972](https://github.com/sanity-io/embeddings-index-cli/commit/0d289726db4fc5e452d6d94af3617f829c358d8f))
+
 ## [1.0.5](https://github.com/sanity-io/embeddings-index-cli/compare/v1.0.4...v1.0.5) (2023-09-14)
 
 ### Bug Fixes
