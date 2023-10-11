@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.10](https://github.com/sanity-io/embeddings-index-cli/compare/v1.0.9...v1.0.10) (2023-10-11)
+
+### Bug Fixes
+
+- missing null-check in error handler ([5ef0635](https://github.com/sanity-io/embeddings-index-cli/commit/5ef06356ebf636f75983d5865c5f59c5ae4022c6))
+
 ## [1.0.9](https://github.com/sanity-io/embeddings-index-cli/compare/v1.0.8...v1.0.9) (2023-09-15)
 
 ### Bug Fixes
