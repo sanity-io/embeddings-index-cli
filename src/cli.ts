@@ -98,7 +98,7 @@ export async function cliEntry(argv = process.argv) {
     const responseMessage = err?.response?.body?.message
     if (
       responseMessage?.includes('Project is not allowed to use this feature') ||
-      responseMessage.includes('feature is not available')
+      responseMessage?.includes('feature is not available')
     ) {
       ;(await import('./disabledNotice')).default()
     }
