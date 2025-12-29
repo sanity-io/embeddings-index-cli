@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.12](https://github.com/sanity-io/embeddings-index-cli/compare/v1.0.11...v1.0.12) (2025-12-29)
+
+### Bug Fixes
+
+- **deps:** allow studio v5 in peer deps ranges ([ec18c01](https://github.com/sanity-io/embeddings-index-cli/commit/ec18c01f37861de002a22effe9b616e9110d7f9c))
+
 ## [1.0.11](https://github.com/sanity-io/embeddings-index-cli/compare/v1.0.10...v1.0.11) (2025-07-10)
 
 ### Bug Fixes
