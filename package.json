@@ -54,7 +54,7 @@
     "execa": "^5.1.1",
     "meow": "^9.0.0",
     "outdent": "^0.8.0",
-    "zod": "^3.22.1"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
