@@ -84,6 +84,9 @@ export async function cliEntry(argv = process.argv) {
 
   try {
     log.setVerbosity(cli.flags)
+    log.warn(
+      'The Embeddings Index API is deprecated and will be sunset in a future release. We recommend migrating to the new Embeddings feature, now natively available within Sanity datasets. Learn more: https://www.sanity.io/docs/content-lake/dataset-embeddings',
+    )
     await cmd({argv: argv.slice(3)})
   } catch (err: any) {
     if (err.response && cli.flags.debug) {
